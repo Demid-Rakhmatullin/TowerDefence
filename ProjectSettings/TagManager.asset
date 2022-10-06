@@ -5,9 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Wall
   - Creep
-  - ActiveBarricade
+  - Tower
+  - Cannon
+  - StaticBuilding
+  - Barricade
+  - Border
+  - RedBulletsPool
+  - OrangeBulletsPool
+  - PurpleBulletsPool
   layers:
   - Default
   - TransparentFX
@@ -21,7 +27,7 @@ TagManager:
   - BuildableArea
   - Bullet
   - Border
-  - 
+  - Obstacle
   - 
   - 
   - 

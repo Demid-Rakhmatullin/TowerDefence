@@ -1,23 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
     public short HitDamage { private get;  set; }
 
+    private Rigidbody _rigidbody;
+
+    void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag(GameManager.Instance.CreepTag))
-        {
-            //Debug.Log("Hit creep");     
+        {   
             var creepScript = other.gameObject.GetComponent<CreepScript>();
             creepScript.TakeDamage(HitDamage);
-        }
-        //else
-        //{
-        //    Debug.Log("Hit smth " + other.gameObject.name);
-        //}
-        Destroy(gameObject);
+            TakeBackToPool();
+        }            
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(GameManager.Instance.BorderTag))
+            TakeBackToPool();
+    }
+
+    private void TakeBackToPool()
+    {
+        gameObject.SetActive(false);
+        _rigidbody.velocity = Vector3.zero;
+        transform.transform.position = Vector3.zero;
     }
 }

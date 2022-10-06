@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,18 +6,22 @@ public class GameManager : MonoBehaviour
 
     public int CreepLayer;
     public int BuildableLayer;
+    public int ObstacleLayer;
     public string CreepTag;
-    public string BarricadeTag;
-    public string WallTag;
+    public string CannonTag;
+    public string StaticBuildingTag;
+    public string GroundTag;
+    public string BorderTag;
     public float BulletLifetime;
     public float CreepRecalculatePathPeriod;
     public float CellSize;
-    public float TowerYPosition;
-    public float BarricadeYPosition;
+    public float PlayboardDiagonal;
+    public float StaticBuildingsDetectionRadius;
 
     public Transform CreepsTarget;
-    public GameObject PositioningTower;
-    public GameObject PositioningBarricade;
+
+    public ConstructingController ConstructingController;
+    public NavMeshController NavMeshController;
 
     void Awake()
     {

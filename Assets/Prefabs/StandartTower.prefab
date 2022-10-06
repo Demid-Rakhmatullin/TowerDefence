@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2326084095163354716}
   - component: {fileID: 2326084095163354715}
   - component: {fileID: 2326084095163354714}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,10 +105,9 @@ GameObject:
   - component: {fileID: 2326084096265251606}
   - component: {fileID: 2326084096265251605}
   - component: {fileID: 2326084096265251604}
-  - component: {fileID: 2326084096265251607}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,25 +187,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2326084096265251607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2326084096265251602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootSpeed: 1
-  Damage: 20
-  Activated: 0
-  Range: 30
-  Bullet: {fileID: 5362607473073097684, guid: c23afd066ec6e7148b3efd47b9d06340, type: 3}
-  BulletSpeed: 70
-  BulletStartShift: 8
 --- !u!1 &2326084096596073365
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,9 +196,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2326084096596073366}
-  m_Layer: 2
+  - component: {fileID: 5544232546747516381}
+  - component: {fileID: 3599178571854481442}
+  m_Layer: 0
   m_Name: StandartTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +221,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5544232546747516381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326084096596073365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootSpeed: 1
+  Damage: 20
+  Range: 30
+  BulletsPoolTag: RedBulletsPool
+  BulletSpeed: 70
+  BulletStartShift: 6
+  BulletStartHeight: 3
+--- !u!114 &3599178571854481442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326084096596073365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867839ce095066044a2d0bd9fd1663d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  _activated: 0
 --- !u!1 &2326084096829250082
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +268,7 @@ GameObject:
   - component: {fileID: 2326084096829250086}
   - component: {fileID: 2326084096829250085}
   - component: {fileID: 2326084096829250084}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

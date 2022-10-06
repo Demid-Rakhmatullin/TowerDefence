@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +8,15 @@ public static class Utils
     public static Transform FindClosest(Vector3 currentPosition, IEnumerable<Transform> objects)
     {
         return objects.Select(t => (Vector3.Distance(t.position, currentPosition), t)).Min().t;
+    }
+
+    public static Transform FindChildWithTag(Transform parent, string tag)
+    {
+        foreach (Transform child in parent)
+            if (child.CompareTag(tag))
+                return child;
+
+        return null;
     }
 
     public static float CalculatePathLength(NavMeshPath path)
@@ -29,6 +35,17 @@ public static class Utils
             i++;
         }
         return lengthSoFar;
+    }
+
+    public static void MakeTransparent(GameObject obj)
+    {
+        foreach (var rendered in obj.GetComponentsInChildren<Renderer>())
+            foreach (var material in rendered.materials)
+            {
+                var color = material.color;
+                color.a = 0.5f;
+                material.color = color;
+            }
     }
 }
 

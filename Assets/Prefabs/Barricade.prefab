@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5757639460786275051}
   - component: {fileID: 4957468369425865588}
   - component: {fileID: 3330576218663370010}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 6460107686015053523}
   - component: {fileID: 2953410310898040955}
   - component: {fileID: 5118455004830801329}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stand (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 8456594100900469485}
   - component: {fileID: 6060352688653294327}
   - component: {fileID: 8029696083619694713}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,9 +291,12 @@ GameObject:
   - component: {fileID: 1066531999587244301}
   - component: {fileID: -4523043664795298250}
   - component: {fileID: 6069831776649413845}
-  m_Layer: 2
+  - component: {fileID: 1427150228982390291}
+  - component: {fileID: -6662050546177253237}
+  - component: {fileID: 4110460765282725512}
+  m_Layer: 0
   m_Name: Barricade
-  m_TagString: Untagged
+  m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,6 +347,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 5
+--- !u!114 &1427150228982390291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109068445192081166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bd80e37abfedc4c8d4dda107e5741c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Substrate: {fileID: 0}
+--- !u!114 &-6662050546177253237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109068445192081166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867839ce095066044a2d0bd9fd1663d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6069831776649413845}
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _activated: 0
+--- !u!65 &4110460765282725512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6109068445192081166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.853987, y: 5.081438, z: 8.983215}
+  m_Center: {x: -0.0068559647, y: 2.904336, z: 0.03852558}
 --- !u!1 &9183177077019106078
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +412,7 @@ GameObject:
   - component: {fileID: 5033386992520851011}
   - component: {fileID: 2189444076106911826}
   - component: {fileID: 8059039409245170411}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

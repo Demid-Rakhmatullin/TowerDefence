@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,58 +30,47 @@ public class CreepScript : MonoBehaviour
         _targetPos = GameManager.Instance.CreepsTarget.position;
         _navAgent.speed = MoveSpeed;
         _navAgent.SetDestination(_targetPos);
+        //GameManager.Instance.NavMeshController.OnObstacleChange += RecalculatePathWithoutTime;
     }
+
+    //private void RecalculatePathWithoutTime()
+    //    => RecalculatePath(true);
 
     void Update()
     {
+        //довести до ума push-подход (на C# events), когда крип пересчитывает путь только при событиях возведения\разрушения баррикады, за отведенное время не удалось
+        //так что, оставил постоянный перерасчет пути крипами каждые GameManager.Instance.CreepRecalculatePathPeriod секунд
         RecalculatePath();
         Attack();
     }
 
-    private void RecalculatePath()
+    private void RecalculatePath(bool dontCheckTime = false)
     {
-        if (Time.time - _lastRecalculatePathTime > GameManager.Instance.CreepRecalculatePathPeriod)
+        if (dontCheckTime || Time.time - _lastRecalculatePathTime > GameManager.Instance.CreepRecalculatePathPeriod)
         {
-            NavMeshPath path = new NavMeshPath();
+            var path = new NavMeshPath();
             _navAgent.CalculatePath(_targetPos, path);
             if (path.status != NavMeshPathStatus.PathComplete)
             {             
                 if (_navAgent.remainingDistance > AttackDistance || _attackTarget == null)
-                {
-                    //Debug.Log("CheckClosestBarricade");
-                    RecalculatePathToClosestBarricade();
-                }                
+                    RecalculatePathToClosestObstacle();             
             }
             else
             {
                 _attackTarget = null;
                 _navAgent.SetPath(path);
-            }
-            //else if (_navAgent.destination != _targetPos)
-            //{
-            //    Debug.Log("Clear");
-            //    _navAgent.SetDestination(_targetPos);
-            //    _attackTarget = null;
-            //}
-            //else
-            //{
-            //    var pathLength = Utils.CalculatePathLength(path);
-            //    if (pathLength < _currPathLength)
-            //    {
-            //        _navAgent.SetPath(path);
-            //        _currPathLength = pathLength;
-            //    }
-            //}
+            }          
             _lastRecalculatePathTime = Time.time;
         }      
     }
 
-    private void RecalculatePathToClosestBarricade()
+    private void RecalculatePathToClosestObstacle()
     {
-        var barricades = GameObject.FindGameObjectsWithTag(GameManager.Instance.BarricadeTag);
-        var orderedBarricades = barricades.OrderBy(b => Vector3.Distance(b.transform.position, transform.position)).ToList();
-
-        foreach (var barricade in orderedBarricades)
+        var obstacles = Physics.OverlapSphere(transform.position, GameManager.Instance.PlayboardDiagonal, 1 << GameManager.Instance.ObstacleLayer)
+            .OrderBy(c => Vector3.Distance(c.transform.position, transform.position))
+            .ToList();
+        
+        foreach (var obstacle in obstacles)
         {
             //Если все пути к главной цели перекрыты, то хотим назначить целью ближайшую баррикаду (barricade)
             //Однако, если просто передать в SetDestination() координаты баррикады (barricade.transfort.position), то NavMesh работает не совсем ожидаемым образом 
@@ -94,36 +80,31 @@ public class CreepScript : MonoBehaviour
             //Для этого строим путь к четырём точкам по бокам баррикады (barricadeScript.DestinationPoints), и выбираем достижимый и наиболее короткий путь
             //Если все четыре точки перекрыты, то переходим к следующей по удаленности баррикаде
             //
-            var barricadeScript = barricade.GetComponent<BarricadeScript>();
+            var barricadeScript = obstacle.GetComponent<BarricadeScript>();
             var possiblePaths = new NavMeshPath[4].Select(h => new NavMeshPath()).ToArray();
             for (int i = 0; i < 4; i++)
                 _navAgent.CalculatePath(barricadeScript.DestinationPoints[i], possiblePaths[i]);
 
-            var pathInfo = possiblePaths
+            var (pathLength, path, destination) = possiblePaths
                 .Select((possiblePath, index) => (possiblePath, destPoint: barricadeScript.DestinationPoints[index]))
                 .Where(x => x.possiblePath.status == NavMeshPathStatus.PathComplete)
                 .Select(x => (pathLength: Utils.CalculatePathLength(x.possiblePath), path: x.possiblePath, destination: x.destPoint))
                 .DefaultIfEmpty()
                 .Min();
 
-            if (pathInfo.path != null)
+            if (path != null)
             {
-                //Debug.Log("Go to barricade: " + barricade.name);
-                _navAgent.SetPath(pathInfo.path);
-                _attackTarget = barricade;
-                //if (_navAgent.destination != pathInfo.destination || _currPathLength > pathInfo.pathLength)
-                //{
-                //    _navAgent.SetPath(pathInfo.path);
-                //    _currPathLength = pathInfo.pathLength;
-                //}
-                //if (_attackTarget != barricade)
-                //    _attackTarget = barricade;
+                _navAgent.SetPath(path);
+                _attackTarget = obstacle.gameObject;
                 return;
             }
         }
+
+        //Если дошли до этого кода, то значит, что перекрыты пути ко всем баррикадам 
+        //По-хорошему, такой ситуации не должно возникать
         _navAgent.isStopped = true;
         _navAgent.ResetPath();
-        //Debug.Log("Can't find path");
+        Debug.Log("Can't find path");
     }
 
     private void Attack()
@@ -131,9 +112,7 @@ public class CreepScript : MonoBehaviour
         if (_attackTarget != null && Time.time - _lastAttackTime >= 1 / AttackSpeed)
         {
             if (Vector3.Distance(transform.position, _attackTarget.transform.position) <= AttackDistance)
-            {
                 _attackTarget.GetComponent<BarricadeScript>().TakeDamage(Damage);
-            }
 
             _lastAttackTime = Time.time;
         }

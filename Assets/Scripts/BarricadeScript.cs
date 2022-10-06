@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 public class BarricadeScript : MonoBehaviour
@@ -15,7 +13,7 @@ public class BarricadeScript : MonoBehaviour
     {
         _navMeshObstacle = GetComponent<NavMeshObstacle>();
     }
-    //void Start() { Activate(); }
+    
     public void Activate()
     {
         var shift = GameManager.Instance.CellSize / 2;
@@ -26,8 +24,9 @@ public class BarricadeScript : MonoBehaviour
             new Vector3(transform.position.x, transform.position.y, transform.position.z - shift),
         };
 
-        gameObject.tag = GameManager.Instance.BarricadeTag;
+        gameObject.layer = GameManager.Instance.ObstacleLayer;
         _navMeshObstacle.enabled = true;
+        //GameManager.Instance.NavMeshController.InvokeObstacleChange();
     }
 
     public bool TakeDamage(short damage)
@@ -36,6 +35,7 @@ public class BarricadeScript : MonoBehaviour
         if (HP <= 0)
         {
             Destroy(gameObject);
+            //GameManager.Instance.NavMeshController.InvokeObstacleChange();
             return true;
         }
         return false;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3515697238953082714}
   - component: {fileID: 6286430427778225176}
   - component: {fileID: 3054913181433275683}
-  - component: {fileID: 8190559598509901873}
+  - component: {fileID: -6684382040545972426}
   m_Layer: 9
   m_Name: GroundCell
   m_TagString: Ground
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8190559598509901873
+--- !u!114 &-6684382040545972426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,6 +103,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4591983866917097680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f29791259df5ca4f95aeca1424bda94, type: 3}
+  m_Script: {fileID: 11500000, guid: f7c8f8b8f1800fa4a8e8885d1e8f726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllowedBuildingsTags:
+  - Barricade
+  _hasBuilding: 0

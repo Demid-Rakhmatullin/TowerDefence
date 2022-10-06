@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6252131775619467359}
   - component: {fileID: 6252131775619467356}
   - component: {fileID: 6252131775619467357}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6252131775813488385}
   - component: {fileID: 6252131775813488390}
   - component: {fileID: 6252131775813488391}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 6252131775821748629}
   - component: {fileID: 6252131775821748650}
   - component: {fileID: 6252131775821748651}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 6252131776475658692}
   - component: {fileID: 6252131776475658693}
   - component: {fileID: 6252131776475658714}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 6252131776608652008}
   - component: {fileID: 6252131776608652009}
   - component: {fileID: 6252131776608652014}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 6252131776822471670}
   - component: {fileID: 6252131776822471671}
   - component: {fileID: 6252131776822471668}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,10 +571,9 @@ GameObject:
   - component: {fileID: 6252131776844530463}
   - component: {fileID: 6252131776844530460}
   - component: {fileID: 6252131776844530461}
-  - component: {fileID: 6252131776844530450}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -655,25 +654,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6252131776844530450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6252131776844530448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootSpeed: 0.5
-  Damage: 40
-  Activated: 0
-  Range: 30
-  Bullet: {fileID: 6560290686295129213, guid: c9c93b4189174364ea02ff934983076c, type: 3}
-  BulletSpeed: 70
-  BulletStartShift: 8
 --- !u!1 &6252131777106541999
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6252131777106541998}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,9 +699,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6252131777155456828}
-  m_Layer: 2
+  - component: {fileID: 4935161135880287905}
+  - component: {fileID: 6117536165338058520}
+  m_Layer: 0
   m_Name: HeavyTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,6 +724,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4935161135880287905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252131777155456829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootSpeed: 0.5
+  Damage: 40
+  Range: 30
+  BulletsPoolTag: PurpleBulletsPool
+  BulletSpeed: 70
+  BulletStartShift: 6
+  BulletStartHeight: 3
+--- !u!114 &6117536165338058520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252131777155456829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867839ce095066044a2d0bd9fd1663d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  _activated: 0
 --- !u!1 &6252131777207024820
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +771,7 @@ GameObject:
   - component: {fileID: 6252131777207024816}
   - component: {fileID: 6252131777207024817}
   - component: {fileID: 6252131777207024822}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +864,7 @@ GameObject:
   - component: {fileID: 6252131777308047035}
   - component: {fileID: 6252131777308047032}
   - component: {fileID: 6252131777308047033}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

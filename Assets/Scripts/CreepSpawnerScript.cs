@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CreepSpawnerScript : MonoBehaviour
@@ -17,7 +16,7 @@ public class CreepSpawnerScript : MonoBehaviour
         while (true)
         {
             var index = Random.Range(0, 3);
-            var clone = Instantiate(Creeps[index], transform.position, Quaternion.identity);
+            Instantiate(Creeps[index], transform.position, Quaternion.identity);
             yield return new WaitForSeconds(SpawnPeriod);
         }
     }

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8766172241089910718}
   - component: {fileID: 8766172241089910705}
   - component: {fileID: 8766172241089910704}
-  - component: {fileID: -10640379406920436}
+  - component: {fileID: 4624761617632845095}
   m_Layer: 9
   m_Name: Wall
-  m_TagString: Wall
+  m_TagString: StaticBuilding
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-10640379406920436
+--- !u!114 &4624761617632845095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,6 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8766172241089910707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2b94d2ffe9ea9488f16b1ed6bd6b30, type: 3}
+  m_Script: {fileID: 11500000, guid: f7c8f8b8f1800fa4a8e8885d1e8f726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuildingYPosition: 4.9
+  AllowedBuildingsTags:
+  - Tower
+  _hasBuilding: 0

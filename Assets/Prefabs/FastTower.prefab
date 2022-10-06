@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3823113919085384212}
   - component: {fileID: 3823113919085384215}
   - component: {fileID: 3823113919085384214}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,10 +106,9 @@ GameObject:
   - component: {fileID: 3823113919488569637}
   - component: {fileID: 3823113919488569636}
   - component: {fileID: 3823113919488569639}
-  - component: {fileID: 3823113919488569634}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,25 +189,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3823113919488569634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3823113919488569641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootSpeed: 2
-  Damage: 10
-  Activated: 0
-  Range: 30
-  Bullet: {fileID: 6906652793708262423, guid: 5c6010a370f825844ae3e87deec90ca9, type: 3}
-  BulletSpeed: 70
-  BulletStartShift: 8
 --- !u!1 &3823113919551882083
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +201,7 @@ GameObject:
   - component: {fileID: 3823113919551882111}
   - component: {fileID: 3823113919551882110}
   - component: {fileID: 3823113919551882081}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Barrel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +295,7 @@ GameObject:
   - component: {fileID: 3823113919848068414}
   - component: {fileID: 3823113919848068385}
   - component: {fileID: 3823113919848068384}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,9 +386,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3823113919893620273}
-  m_Layer: 2
+  - component: {fileID: 2510120886298800463}
+  - component: {fileID: 5079376086661628972}
+  m_Layer: 0
   m_Name: FastTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,6 +411,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2510120886298800463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823113919893620272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b788339a245444ebfa57614a5f6e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootSpeed: 2
+  Damage: 10
+  Range: 30
+  BulletsPoolTag: OrangeBulletsPool
+  BulletSpeed: 70
+  BulletStartShift: 6
+  BulletStartHeight: 3
+--- !u!114 &5079376086661628972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823113919893620272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867839ce095066044a2d0bd9fd1663d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  _activated: 0
 --- !u!1 &3823113920015558865
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,7 +458,7 @@ GameObject:
   - component: {fileID: 3823113920015558893}
   - component: {fileID: 3823113920015558892}
   - component: {fileID: 3823113920015558895}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
