@@ -5,8 +5,6 @@ public class BuildableAreaScript : MonoBehaviour
     public float BuildingYPosition;
     public string[] AllowedBuildingsTags;
 
-    [SerializeField]
-    [ReadOnly]
     private bool _hasBuilding;
 
     public bool HasBuilding { get { return _hasBuilding; } }

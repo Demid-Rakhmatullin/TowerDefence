@@ -5,8 +5,6 @@ public class NeedActivationScript : MonoBehaviour
 {
     public UnityEvent OnActivate;
 
-    [SerializeField]
-    [ReadOnly]
     private bool _activated;
 
     public bool Activated { get { return _activated; } }

@@ -2,8 +2,7 @@
 
 public class DestroyableBuildingScript : MonoBehaviour
 {
-    [ReadOnly]
-    public BuildableAreaScript Substrate;
+    public BuildableAreaScript Substrate { get; set; }
 
     void OnDestroy()
     {
