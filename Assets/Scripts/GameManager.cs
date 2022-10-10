@@ -28,4 +28,12 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
             Instance = gameObject.GetComponent<GameManager>();
     }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

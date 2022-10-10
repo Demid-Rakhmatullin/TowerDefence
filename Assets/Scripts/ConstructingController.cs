@@ -61,7 +61,7 @@ public class ConstructingController : MonoBehaviour
    
     private void ConstructBuilding(GameObject buildingPrefab, BuildableAreaScript area)
     {
-        var building = Instantiate(buildingPrefab, GetConstructionPos(area), Quaternion.identity);
+        var building = Instantiate(buildingPrefab, GetConstructionPos(area), Quaternion.identity, transform);
         area.SetBuilding(building);
         building.GetComponent<NeedActivationScript>()?.Activate();
         ResetPositioningInstance();

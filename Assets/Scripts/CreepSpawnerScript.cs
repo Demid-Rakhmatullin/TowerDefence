@@ -16,7 +16,8 @@ public class CreepSpawnerScript : MonoBehaviour
         while (true)
         {
             var index = Random.Range(0, 3);
-            Instantiate(Creeps[index], transform.position, Quaternion.identity);
+            Instantiate(Creeps[index], transform.position, Quaternion.identity, transform);
+            
             yield return new WaitForSeconds(SpawnPeriod);
         }
     }
